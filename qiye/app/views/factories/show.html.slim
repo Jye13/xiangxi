@@ -1,0 +1,33 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 基本信息
+      .panel-body
+        table.table.table-striped
+          tr
+            td width='15%' 名字
+            td width='35%' = @factory.name
+            td width='15%' 电话
+            td width='35%' = @factory.tel
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 关联站点
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th width='15%' 名字
+          tbody
+            - @factory.stations.each do |station|
+              tr
+                td 
+                  = link_to station.name, station
+
+
+= link_to 'Edit', edit_factory_path(@factory)
+'|
+= link_to 'Back', factories_path

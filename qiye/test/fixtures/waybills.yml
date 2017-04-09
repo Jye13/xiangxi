@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  sender_type: MyString
+  sender_id: 1
+  receiver_type: MyString
+  receiver_id: 1
+  next_waybill_id: 1
+  exp_time: 2017-02-23 14:31:34
+  actual_time: 2017-02-23 14:31:34
+  order: one
+
+two:
+  status: 1
+  sender_type: MyString
+  sender_id: 1
+  receiver_type: MyString
+  receiver_id: 1
+  next_waybill_id: 1
+  exp_time: 2017-02-23 14:31:34
+  actual_time: 2017-02-23 14:31:34
+  order: two

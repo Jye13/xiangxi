@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Status:
+  = @waybill.status
+p
+  strong Sender type:
+  = @waybill.sender_type
+p
+  strong Sender:
+  = @waybill.sender_id
+p
+  strong Receiver type:
+  = @waybill.receiver_type
+p
+  strong Receiver:
+  = @waybill.receiver_id
+p
+  strong Next waybill:
+  = @waybill.next_waybill_id
+p
+  strong Exp time:
+  = @waybill.exp_time
+p
+  strong Actual time:
+  = @waybill.actual_time
+p
+  strong Order:
+  = @waybill.order
+
+= link_to 'Edit', edit_waybill_path(@waybill)
+'|
+= link_to 'Back', waybills_path

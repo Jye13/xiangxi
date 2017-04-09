@@ -1,0 +1,26 @@
+- current_city.categories.each do |category|
+  .panel.panel-default
+    .panel-heading
+      = category.name
+    .panel-body
+      table.table.table-striped
+        thead
+          tr
+            th Grade
+            th Category
+            th From date
+            th
+            th
+            th
+
+        tbody
+          - current_city.price_rules.where(category: category).each do |price_rule|
+            tr
+              td = show_grade(price_rule.grade)
+              td = price_rule.category.name
+              td = price_rule.from_date
+              td = link_to 'Show', price_rule
+              td = link_to 'Edit', edit_price_rule_path(price_rule)
+              td = link_to 'Destroy', price_rule, data: { confirm: 'Are you sure?' }, method: :delete
+    .panel-footer
+      = link_to 'New Price rule', new_price_rule_path(category: category), class: 'btn btn-info btn-sm'

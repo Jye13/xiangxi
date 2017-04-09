@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails yonghu: production" uuid="2092f342-1950-43a0-95ce-0dfd80b768d0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>test</user-name>
+    </data-source>
+    <data-source name="Rails yonghu: test" uuid="e510902d-0067-47fd-aee3-1659f31155c6">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>test</user-name>
+    </data-source>
+    <data-source name="Rails yonghu: development" uuid="45c654dd-54f2-4681-8fb4-8b75717030b9">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>test</user-name>
+    </data-source>
+    <data-source name="Rails yonghu: default" uuid="f90efa52-9923-480d-8c66-671fe1517352">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>test</user-name>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Serial:
+  = @product_item.serial
+p
+  strong Status:
+  = @product_item.status
+p
+  strong Order:
+  = @product_item.order
+p
+  strong Product:
+  = @product_item.product
+
+= link_to 'Edit', edit_product_item_path(@product_item)
+'|
+= link_to 'Back', product_items_path

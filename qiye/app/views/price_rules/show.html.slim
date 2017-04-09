@@ -1,0 +1,47 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 基本信息
+      .panel-body
+        table.table.table-striped
+          tr
+            td width='15%' City
+            td width='35%' = @price_rule.city.name
+            td width='15%' Category
+            td width='35%' = @price_rule.category.name
+          tr
+            td width='15%' Grade
+            td width='35%' = show_grade(@price_rule.grade)
+            td width='15%' From date
+            td width='35%' = @price_rule.from_date
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        | 价格表
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th 商品
+              th width='10%' A
+              th width='10%' B
+              th width='10%' C
+              th width='10%' D
+              th width='10%' E
+              th width='10%' F
+
+          tbody
+            - @prices.each do |price|
+              tr
+                td = price.product.name
+                - 1.upto(6).each do |i|
+                  td class="#{highlight_grade(@price_rule.grade, i)}"
+                    = price.send("price#{i}")
+        = will_paginate @prices, renderer: BootstrapPagination::Rails
+
+= link_to 'Edit', edit_price_rule_path(@price_rule)
+'|
+= link_to 'Back', price_rules_path

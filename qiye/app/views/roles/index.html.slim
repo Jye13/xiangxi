@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    | 角色
+  .panel-body
+    table.table.table-stripted
+      thead
+        tr
+          th 标识
+          th 名称
+          th 备注
+          th
+          th
+          th
+
+      tbody
+        - @roles.each do |role|
+          tr
+            td = role.name
+            td = role.display_name
+            td = role.comment
+            td = link_to 'Show', role_path(role)
+            td = link_to 'Edit', edit_role_path(role)
+            td = link_to 'Destroy', role_path(role), data: { confirm: 'Are you sure?' }, method: :delete
+            
+    = will_paginate @roles, renderer: BootstrapPagination::Rails
+  .panel-footer
+    = link_to 'New Role', new_role_path, class: 'btn btn-info btn-sm'

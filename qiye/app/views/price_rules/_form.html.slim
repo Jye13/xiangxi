@@ -1,0 +1,10 @@
+= simple_form_for(@price_rule) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :grade, collection: ('A'..'F').zip(1..6)
+    = f.association :category
+    = f.input :from_date
+
+  .form-actions
+    = f.button :submit

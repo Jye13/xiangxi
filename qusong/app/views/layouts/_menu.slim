@@ -1,0 +1,7 @@
+ul.nav.nav-tabs.nav-justified
+  li role="presentation" class="#{is_active?(['categories'], params[:controller])}"
+    = link_to '首页', '#'
+  li role="presentation" class="#{is_active?(['waybills'], params[:controller])}"
+    = link_to '订单', waybills_path
+  li role="presentation" class="#{is_active?(['home', 'addresses'], params[:controller])}"
+    = link_to '我的', '#'

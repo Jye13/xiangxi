@@ -1,0 +1,31 @@
+.panel.panel-default
+  .panel-heading
+    | 品类
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th Logo
+          th Is del
+          th
+          th
+          th
+
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.name
+            td = image_tag qiniu_url(category.logo), size: '150x150'
+            td
+              - if category.is_del
+                span.label.label-primary 是
+              - else
+                span.label.label-default 否 
+            td = link_to 'Show', category
+            td = link_to 'Edit', edit_category_path(category)
+            td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
+
+    = will_paginate @categories, renderer: BootstrapPagination::Rails
+  .panel-footer
+    = link_to 'New Category', new_category_path, class: 'btn btn-info btn-sm'

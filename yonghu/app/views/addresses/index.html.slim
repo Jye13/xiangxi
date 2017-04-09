@@ -1,0 +1,27 @@
+h1 Listing addresses
+
+table.table.table-stripted
+  thead
+    tr
+      th Address
+      th Lat
+      th Lng
+      th Comment
+      th
+      th
+      th
+
+  tbody
+    - @addresses.each do |address|
+      tr
+        td = address.address
+        td = address.lat
+        td = address.lng
+        td = address.comment
+        td = link_to 'Show', address
+        td = link_to 'Edit', edit_address_path(address)
+        td = link_to 'Destroy', address, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Address', new_address_path

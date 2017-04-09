@@ -1,0 +1,65 @@
+p#notice = notice
+
+p
+  strong Category:
+  = @order.category.name
+p
+  strong Total price:
+  = @order.total_price
+p
+  strong Status:
+  = @order.status
+p
+  strong Courier status:
+  = @order.courier_status
+p
+  strong Voucher status:
+  = @order.voucher_status
+p
+  strong Cleaning status:
+  = @order.cleaning_status
+
+= link_to 'Edit', edit_order_path(@order)
+'|
+= link_to 'Back', orders_path
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 物流分拣信息
+      .panel-body
+        table.table.table-striped
+          tr
+            th 产品
+            th 数量
+            th 单价
+            th 总价
+            th
+            th
+          - @order.items.each do |item|
+            tr
+              td = item.product
+              td = item.amount
+              td = item.price
+              td = item.amount * item.price
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 工厂分拣信息
+      .panel-body
+        table.table.table-striped
+          tr
+            th 产品
+            th 序列号
+            th 状态
+            th
+            th
+          - @order.product_items.each do |product_item|
+            tr
+              td = product_item.product
+              td = product_item.serial
+              td = product_item.status
+              

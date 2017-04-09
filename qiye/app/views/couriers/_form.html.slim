@@ -1,0 +1,8 @@
+= simple_form_for(@courier) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :stations, as: :check_boxes, include_blank: false
+
+  .form-actions
+    = f.button :submit

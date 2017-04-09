@@ -1,0 +1,35 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @category.name
+p
+  strong Logo:
+  = @category.logo
+p
+  strong Is del:
+  = @category.is_del
+
+= link_to 'Edit', edit_category_path(@category)
+'|
+= link_to 'Back', categories_path
+
+
+.col-md-12
+  .panel.panel-default
+    .panel-heading#service_categories
+      | 商品
+    .panel-body
+      table.table.table-striped
+        thead
+          tr
+            th width='25%' Name
+            th width='10%' Logo
+            th width='10%' is_del
+            th width='5%' 
+            th width='5%' 
+        tbody
+          = render @products
+      = will_paginate @products, renderer: BootstrapPagination::Rails
+    .panel-footer
+      = link_to '新建商品', new_category_product_path(@category), class: 'btn btn-info btn-sm'

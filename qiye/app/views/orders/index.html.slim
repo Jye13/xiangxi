@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading
+    | 订单
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th Category
+          th Address
+          th Total price
+          th Status
+          th Courier status
+          th Voucher status
+          th Cleaning status
+          th
+
+      tbody
+        - @orders.each do |order|
+          tr
+            td = order.category.name
+            td = order.address
+            td = order.total_price
+            td = order.status
+            td = order.courier_status
+            td = order.voucher_status
+            td = order.cleaning_status
+            td = link_to 'Show', order
+
+= will_paginate @categories, renderer: BootstrapPagination::Rails
+br

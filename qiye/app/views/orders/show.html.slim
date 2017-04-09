@@ -1,0 +1,63 @@
+p#notice = notice
+
+p
+  strong Category:
+  = @order.category.name
+p
+  strong Address:
+  = @order.address
+p
+  strong Total price:
+  = @order.total_price
+p
+  strong Status:
+  = @order.status
+p
+  strong Courier status:
+  = @order.courier_status
+p
+  strong Voucher status:
+  = @order.voucher_status
+p
+  strong Cleaning status:
+  = @order.cleaning_status
+
+= link_to 'Edit', edit_order_path(@order)
+'|
+= link_to 'Back', orders_path
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 物流单
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th width='15%' 从
+              th width='15%' 到
+              th width='15%' 状态
+              th width='15%' 期望执行
+              th width='15%' 实际执行
+          tbody
+            - @order.waybills.each do |waybill|
+              tr
+                td
+                  - if waybill.sender_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = link_to waybill.sender.address
+                td
+                  - if waybill.receiver_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = link_to waybill.receiver.address
+                td
+                  = show_waybill_status waybill.status
+                td
+                  = date_time waybill.exp_time
+                td
+                  = date_time waybill.actual_time
+      .panel-body
+        = link_to '派单', paidan_order_path(@order), method: :post, class: 'btn btn-info btn-sm'

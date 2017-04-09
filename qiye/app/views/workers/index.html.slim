@@ -1,0 +1,36 @@
+.panel.panel-default
+  .panel-heading
+    | 操作员
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th 登录邮箱
+          th 登录次数
+          th 是否锁定
+          th 角色
+          th 负责城市
+          th
+          th
+
+      tbody
+        - @workers.each do |worker|
+          tr
+            td = worker.email
+            td = worker.sign_in_count
+            td 
+              - if worker.access_locked?
+                span.label.label-default 是
+              - else
+                span.label.label-primary 否
+            td
+              = worker.roles.map(&:display_name).join(',')
+            td
+              = worker.cities.map(&:name).join(',')
+            td
+               = link_to '修改密码', reset_password_worker_path(worker)
+            td
+               = link_to '修改', edit_worker_path(worker)
+    = will_paginate @workers, renderer: BootstrapPagination::Rails
+  .panel-footer
+    = link_to '新建', new_worker_path, class: 'btn btn-info btn-sm'

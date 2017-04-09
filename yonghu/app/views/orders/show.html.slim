@@ -1,0 +1,23 @@
+p
+  strong Category:
+  = @order.category.name
+p
+  strong Address:
+  = @order.address.address
+p
+  strong Total price:
+  = @order.total_price
+p
+  strong Status:
+  = @order.status
+p
+  strong Courier status:
+  = @order.courier_status
+p
+  strong Voucher status:
+  = @order.voucher_status
+p
+  strong Cleaning status:
+  = @order.cleaning_status
+
+= link_to 'Back', orders_path

@@ -1,0 +1,27 @@
+h1 Listing product_items
+
+table
+  thead
+    tr
+      th Serial
+      th Status
+      th Order
+      th Product
+      th
+      th
+      th
+
+  tbody
+    - @product_items.each do |product_item|
+      tr
+        td = product_item.serial
+        td = product_item.status
+        td = product_item.order
+        td = product_item.product
+        td = link_to 'Show', product_item
+        td = link_to 'Edit', edit_product_item_path(product_item)
+        td = link_to 'Destroy', product_item, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Product item', new_product_item_path

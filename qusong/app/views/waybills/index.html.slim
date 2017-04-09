@@ -1,0 +1,71 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 取件单
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th width='15%' 从
+              th width='15%' 到
+              th width='15%' 状态
+              th width='15%' 期望执行
+              th width='15%' 实际执行
+              th
+          tbody
+            - @pickup_waybills.each do |waybill|
+              tr
+                td
+                  - if waybill.sender_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = waybill.sender.address
+                td
+                  - if waybill.sender_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = waybill.sender.address
+                td
+                  = show_waybill_status waybill.status
+                td
+                  = date_time waybill.exp_time
+                td
+                  = date_time waybill.actual_time
+                td = link_to 'Show', waybill
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading#operations
+        | 送件单
+      .panel-body
+        table.table.table-striped
+          thead
+            tr
+              th width='15%' 联系人
+              th width='15%' 地址
+              th width='15%' 状态
+              th width='15%' 期望执行
+              th width='15%' 实际执行
+              th
+          tbody
+            - @deliver_waybills.each do |waybill|
+              tr
+                td
+                  - if waybill.receiver_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = waybill.receiver.address
+                td
+                  - if waybill.receiver_type == 'User' 
+                    = waybill.order.address
+                  - else
+                    = waybill.receiver.address
+                td
+                  = show_waybill_status waybill.status
+                td
+                  = date_time waybill.exp_time
+                td
+                  = date_time waybill.actual_time
+                td = link_to 'Show', waybill

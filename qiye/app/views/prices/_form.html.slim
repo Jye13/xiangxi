@@ -1,0 +1,14 @@
+= simple_form_for(@price) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :price1
+    = f.input :price2
+    = f.input :price3
+    = f.input :price4
+    = f.input :price5
+    = f.input :price6
+    = f.association :product
+
+  .form-actions
+    = f.button :submit

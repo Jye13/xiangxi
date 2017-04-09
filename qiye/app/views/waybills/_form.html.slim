@@ -1,0 +1,16 @@
+= simple_form_for(@waybill) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :status
+    = f.input :sender_type
+    = f.input :sender_id
+    = f.input :receiver_type
+    = f.input :receiver_id
+    = f.input :next_waybill_id
+    = f.input :exp_time
+    = f.input :actual_time
+    = f.association :order
+
+  .form-actions
+    = f.button :submit

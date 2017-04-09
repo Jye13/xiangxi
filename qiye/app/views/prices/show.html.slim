@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Price1:
+  = @price.price1
+p
+  strong Price2:
+  = @price.price2
+p
+  strong Price3:
+  = @price.price3
+p
+  strong Price4:
+  = @price.price4
+p
+  strong Price5:
+  = @price.price5
+p
+  strong Price6:
+  = @price.price6
+p
+  strong Product:
+  = @price.product
+
+= link_to 'Edit', edit_price_path(@price)
+'|
+= link_to 'Back', prices_path

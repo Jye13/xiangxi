@@ -1,0 +1,37 @@
+h1 Listing waybills
+
+table
+  thead
+    tr
+      th Status
+      th Sender type
+      th Sender
+      th Receiver type
+      th Receiver
+      th Next waybill
+      th Exp time
+      th Actual time
+      th Order
+      th
+      th
+      th
+
+  tbody
+    - @waybills.each do |waybill|
+      tr
+        td = waybill.status
+        td = waybill.sender_type
+        td = waybill.sender_id
+        td = waybill.receiver_type
+        td = waybill.receiver_id
+        td = waybill.next_waybill_id
+        td = waybill.exp_time
+        td = waybill.actual_time
+        td = waybill.order
+        td = link_to 'Show', waybill
+        td = link_to 'Edit', edit_waybill_path(waybill)
+        td = link_to 'Destroy', waybill, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Waybill', new_waybill_path

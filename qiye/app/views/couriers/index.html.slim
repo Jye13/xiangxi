@@ -1,0 +1,27 @@
+h1 Listing couriers
+
+table.table.table-striped
+  thead
+    tr
+      th 登录账号
+      th 姓名
+      th 已激活
+      th
+      th
+      th
+
+  tbody
+    - @couriers.each do |courier|
+      tr
+        td = courier.mobile
+        td = courier.name
+        td
+          - if courier.status?
+            span.label.label-primary 是
+          - else
+            span.label.label-default 否 
+        td = link_to 'Show', courier
+        td = link_to 'Edit', edit_courier_path(courier)
+        td = link_to 'Destroy', courier, data: { confirm: 'Are you sure?' }, method: :delete
+
+= will_paginate @couriers, renderer: BootstrapPagination::Rails

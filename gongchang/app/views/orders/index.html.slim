@@ -1,0 +1,14 @@
+h1 Listing orders
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.id
+        td = link_to 'Show', order

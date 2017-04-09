@@ -1,0 +1,51 @@
+- if @waybill.receiver == current_courier
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading#operations
+          | 基本信息
+        .panel-body
+          table.table.table-striped
+            tr
+              td width='13%' 联系人
+              td width='20%' = @waybill.order.user.name
+              td width='13%' 联系方式
+              td width='20%' = @waybill.order.user.mobile
+              td width='13%' 取件地址
+              td width='20%' = @waybill.order.address
+            tr
+              td width='13%' 当前状态
+              td width='20%' = show_waybill_status @waybill.status
+              td width='13%' 期望执行
+              td width='20%' = date_time @waybill.exp_time
+              td width='13%' 实际执行
+              td width='20%' = date_time @waybill.actual_time
+
+  = link_to '已取', yiqu_waybill_path(@waybill), method: :put, class: 'btn btn-info btn-sm' if @waybill.can_qujian?
+  
+  = link_to 'Back', waybills_path
+
+.row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading#operations
+          | 分拣信息
+        .panel-body
+          table.table.table-striped
+            tr
+              th 产品
+              th 数量
+              th 单价
+              th 总价
+              th
+              th
+            - @waybill.order.items.each do |item|
+              tr
+                td = item.product
+                td = item.amount
+                td = item.price
+                td = item.amount * item.price
+                td = link_to 'Edit', edit_waybill_item_path(@waybill, item)
+                td = link_to 'Destroy', waybill_item_path(@waybill, item), data: { confirm: 'Are you sure?' }, method: :delete
+        .panel-footer
+          = link_to '分拣', new_waybill_item_path(@waybill), class: 'btn btn-info btn-sm'

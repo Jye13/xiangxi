@@ -1,0 +1,32 @@
+= simple_form_for(@city) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :region, collection: []
+    = f.association :categories, as: :check_boxes
+
+  .form-actions
+    = f.button :submit
+
+javascript:
+  $(function(){
+    $("#city_region_id").select2({
+      placeholder: "输入一个地址",
+      theme: 'bootstrap',
+      ajax: {
+        url: '/regions/search.json',
+        dataType: 'json',
+        delay: 250,
+        cache: false
+      },
+      minimumInputLength: 1
+    })
+
+    $("#city_region_id").on("change", function (e) {
+      var data = $("#city_region_id").select2('data')[0];
+      if(data){
+        $("#city_name").val(data['name'])
+      }
+    });
+  })

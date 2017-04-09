@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  user: one
+  address: one
+  total_price: 1.5
+  status: 1
+  courier_status: 1
+  voucher_status: 1
+  cleaning_status: 1
+
+two:
+  category: two
+  user: two
+  address: two
+  total_price: 1.5
+  status: 1
+  courier_status: 1
+  voucher_status: 1
+  cleaning_status: 1

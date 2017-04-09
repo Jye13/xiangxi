@@ -1,0 +1,11 @@
+h1 Edit worker
+
+= simple_form_for(@worker) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.association :roles, as: :check_boxes
+    = f.association :cities, as: :check_boxes
+  .form-actions
+    = f.button :submit
+
+= link_to 'Back', workers_path

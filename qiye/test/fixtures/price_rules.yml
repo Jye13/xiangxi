@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: 1
+  city: one
+  category: one
+  from_date: 2017-02-22
+
+two:
+  grade: 1
+  city: two
+  category: two
+  from_date: 2017-02-22

@@ -1,0 +1,67 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+
+    a.navbar-brand href=""
+      ="后台"
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      - if current_worker
+        ul.nav.navbar-nav
+          - if can?(:manage, Worker)
+            li.dropdown
+              = link_to "系统管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
+              ul.dropdown-menu
+                li class="#{is_active?('workers', params[:controller])}"
+                  = link_to "人员", workers_path
+                li class="#{is_active?('roles', params[:controller])}"
+                  = link_to "角色", roles_path
+          - if current_worker.has_role?(:yunying)
+            li.dropdown
+              = link_to "总部管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
+              ul.dropdown-menu
+                - if can?(:manage, City)
+                  li class="#{is_active?('workers', params[:controller])}"
+                    = link_to "开通城市", cities_path
+                - if can?(:manage, Category)
+                  li class="#{is_active?('categories', params[:controller])}"
+                    = link_to "品类", categories_path
+                - if can?(:manage, Price)
+                  li class="#{is_active?('prices', params[:controller])}"
+                    = link_to "价格管理", prices_path
+          - if current_worker.has_role?(:fenchengshi)
+            li.dropdown
+              = link_to "分城市管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
+              ul.dropdown-menu
+                li class="#{is_active?('price_rules', params[:controller])}"
+                  = link_to "价格管理", price_rules_path
+                li class="#{is_active?('couriers', params[:controller])}"
+                  = link_to "取送人员", couriers_path
+                li class="#{is_active?('factories', params[:controller])}"
+                  = link_to "工厂", factories_path
+                li class="#{is_active?('stations', params[:controller])}"
+                  = link_to "驿站", stations_path
+                li class="#{is_active?('users', params[:controller])}"
+                  = link_to "用户", users_path
+                li class="#{is_active?('orders', params[:controller])}"
+                  = link_to "订单", orders_path
+
+        ul.nav.navbar-nav.ieCss.pull-right role="presentation"
+          .dropdown
+            span style="font-size:14px; color:#777" = current_worker.email
+            button.btn.dropdown-toggler type='button' data-toggle='dropdown' style='background:none' &#9660
+            ul.dropdown-menu role='menu' aria-labelledby="dropdownMenu1"
+              li role="presentation"
+                = link_to "退出登陆", destroy_worker_session_path, method: :delete
+
+        - if current_city
+          ul.nav.navbar-nav.ieCss.pull-right role="presentation"
+            .dropdown
+              span style="font-size:14px; color:#777" = current_city['name']
+              button.btn.dropdown-toggler type='button' data-toggle='dropdown' style='background:none' &#9660
+              ul.dropdown-menu role='menu' aria-labelledby="dropdownMenu1"
+                - current_worker.cities.each do |city|
+                  li role="presentation"
+                    = link_to city.name, change_current_city_worker_path(city), method: :put

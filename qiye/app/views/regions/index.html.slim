@@ -1,0 +1,25 @@
+h1 Listing regions
+
+table
+  thead
+    tr
+      th Name
+      th Parent
+      th Level
+      th
+      th
+      th
+
+  tbody
+    - @regions.each do |region|
+      tr
+        td = region.name
+        td = region.parent_id
+        td = region.level
+        td = link_to 'Show', region
+        td = link_to 'Edit', edit_region_path(region)
+        td = link_to 'Destroy', region, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Region', new_region_path

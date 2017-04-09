@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @region.name
+p
+  strong Parent:
+  = @region.parent_id
+p
+  strong Level:
+  = @region.level
+
+= link_to 'Edit', edit_region_path(@region)
+'|
+= link_to 'Back', regions_path

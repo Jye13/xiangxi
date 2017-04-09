@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price1: 1.5
+  price2: 1.5
+  price3: 1.5
+  price4: 1.5
+  price5: 1.5
+  price6: 1.5
+  product: one
+
+two:
+  price1: 1.5
+  price2: 1.5
+  price3: 1.5
+  price4: 1.5
+  price5: 1.5
+  price6: 1.5
+  product: two

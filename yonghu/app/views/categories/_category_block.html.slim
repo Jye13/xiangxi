@@ -1,0 +1,4 @@
+.text-center
+  = link_to image_tag("#{qiniu_url(category.logo)}", size: '150x150'), category_path(category)
+  br
+  = category.name

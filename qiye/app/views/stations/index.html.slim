@@ -1,0 +1,31 @@
+h1 Listing stations
+
+table.table.table-stripted
+  thead
+    tr
+      th Name
+      th Address
+      th Comment
+      th Lat
+      th Lng
+      th Region
+      th
+      th
+      th
+
+  tbody
+    - @stations.each do |station|
+      tr
+        td = station.name
+        td = station.address.address
+        td = station.address.comment
+        td = station.address.lat
+        td = station.address.lng
+        td = station.region
+        td = link_to 'Show', station
+        td = link_to 'Edit', edit_station_path(station)
+        td = link_to 'Destroy', station, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Station', new_station_path

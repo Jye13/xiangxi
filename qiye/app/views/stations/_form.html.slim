@@ -1,0 +1,38 @@
+= simple_form_for(@station) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.simple_fields_for :address do |a|
+      = a.input :address, as: :select
+      = a.input :comment
+      = a.input :lat
+      = a.input :lng
+    = f.association :region, as: :string
+
+  .form-actions
+    = f.button :submit
+
+javascript:
+  $(function(){
+    $("#station_address_attributes_address").select2({
+      placeholder: "输入一个地址",
+      theme: 'bootstrap',
+      ajax: {
+        url: '/addresses/suggestion.json',
+        dataType: 'json',
+        delay: 250,
+        cache: false
+      },
+      minimumInputLength: 1
+    })
+
+    $("#station_address_attributes_address").on("change", function (e) {
+      var data = $("#station_address_attributes_address").select2('data')[0];
+      if(data){
+        $("#station_address_attributes_lat").val(data['lat'])
+        $("#station_address_attributes_lng").val(data['lng'])
+        $("#station_region_id").val(data['region_id'])
+      }
+    });
+  })

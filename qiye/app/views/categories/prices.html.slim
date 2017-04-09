@@ -1,0 +1,40 @@
+.panel.panel-default
+  .panel-heading
+    | 价格表
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th 商品
+          th width='10%' A
+          th width='10%' B
+          th width='10%' C
+          th width='10%' D
+          th width='10%' E
+          th width='10%' F
+
+      tbody
+        - @prices.each do |price|
+          tr
+            td = price.product.name
+            - 1.upto(6).each do |i|
+              td 
+                span.editable data={type: :text, name: "price[price#{i}]", 'url' => price_path(price)}
+                  = price.send("price#{i}")
+    = will_paginate @prices, renderer: BootstrapPagination::Rails
+  .panel-footer
+    = link_to '初始化', init_prices_category_path(@category), class: 'btn btn-info btn-sm', method: :post
+
+javascript:
+  // 设置为空时的填充文字
+  $('.editable').editable({
+    emptytext: '-'
+  });
+
+  // 当弹出输入框时去掉输入框中的'-'
+  $('.editable').on('shown', function(e, editable) {
+    setTimeout(function() {
+      $('.editable-input>input').focus();
+      $('.editable-input>input').select();
+    }, 0);
+  });

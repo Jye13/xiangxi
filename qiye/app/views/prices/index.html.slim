@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    | 品类价目
+  .panel-body
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th
+
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.name
+            td = link_to '价目表', prices_category_path(category)
+
+    = will_paginate @categories, renderer: BootstrapPagination::Rails

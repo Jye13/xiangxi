@@ -1,0 +1,11 @@
+= simple_form_for(@product_item) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :serial
+    = f.input :status
+    = f.association :order
+    = f.association :product
+
+  .form-actions
+    = f.button :submit

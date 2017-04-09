@@ -1,0 +1,4 @@
+- unless current_user
+  = link_to '登录', new_user_session_path
+- else
+  = link_to '地址列表', addresses_path

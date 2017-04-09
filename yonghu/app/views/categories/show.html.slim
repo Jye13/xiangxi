@@ -1,0 +1,10 @@
+- @products.each_slice(2).each do |products|
+  .row 
+    - products.each do |product|
+      .col-xs-6
+        = render partial: 'products/product', locals: {product: product}
+  br
+
+= will_paginate @products, renderer: BootstrapPagination::Rails
+
+= link_to '下单', new_order_path(category: @category), class: 'btn btn-info btn-sm'

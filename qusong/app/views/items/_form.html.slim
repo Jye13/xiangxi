@@ -1,0 +1,8 @@
+= simple_form_for([@waybill, @item]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :product, collection: @waybill.order.category.products
+    = f.input :amount
+  .form-actions
+    = f.button :submit
